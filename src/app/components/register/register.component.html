@@ -1,0 +1,97 @@
+<div fxLayout="row" fxLayoutAlign="center center">
+  <mat-card fxFlex="30%;" fxFlex.xs="70%" fxFlex.sm="40%" fxFlex.md="30%">
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit(registerForm.value)">
+      <div align="center">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS-3dpjoSufceWq3modV7S1x2Mgh6a9xHvU0bNKfVH6TI486O76" height=25% width=25%>
+      </div><br>
+      <div align="center"><label><b>Sign In For Fundoo Note</b></label></div><br>
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your Id" type="text" formControlName="id" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.id.errors }" />
+            <mat-icon matSuffix> 
+            id
+            </mat-icon>
+          <mat-error *ngIf="submitted && f.id.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.id.errors.required">
+              *Id is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your Name" type="text" formControlName="name" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+            <mat-icon matSuffix>
+            how_to_reg
+            </mat-icon>
+          <mat-error *ngIf="submitted && f.name.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.name.errors.required">
+              *Name is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your Phonenumber" type="text" formControlName="phonenumber" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.phonenumber.errors }" />
+            <mat-icon matSuffix> 
+            phonenumber 
+            </mat-icon>
+          <mat-error *ngIf="submitted && f.phonenumber.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.phonenumber.errors.required">
+              *Phonenumber is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" type="email" formControlName="email" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <mat-icon matSuffix> 
+            email 
+            </mat-icon>
+          <mat-error *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.email.errors.required">
+              *email Id is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group" class="example-container">
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'"
+            formControlName="password" class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+          <mat-icon matSuffix (click)="hide = !hide">
+            {{hide ? 'visibility_off' : 'visibility'}}
+          </mat-icon>
+          <mat-error *ngIf="submitted && f.password.errors" class="invalid-feedback">
+            <mat-error *ngIf="f.password.errors.required">
+              *password is <strong>required</strong>
+            </mat-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      
+      <div class="form-group">
+        <mat-card-actions>
+          <div class="button-row">
+            <button mat-raised-button [disabled]="registerForm.invalid">Submit</button>
+          
+          </div>
+
+
+          
+        </mat-card-actions>
+      </div>
+    </form>
+  </mat-card>
+</div>
+
