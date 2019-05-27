@@ -13,6 +13,7 @@ import { ForgotpasswordComponent } from './components/forgotpassword/forgotpassw
 import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { NoteComponent } from './components/note/note.component';
+import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { NoteComponent } from './components/note/note.component';
     RegisterComponent,
     HomeComponent,
     ForgotpasswordComponent,
-    NoteComponent
+    NoteComponent,
+    SidenavbarComponent
   ],
   imports: [
     BrowserModule,

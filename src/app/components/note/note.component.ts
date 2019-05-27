@@ -32,7 +32,7 @@ get f() { return this.noteForm.controls; }
     }
     this.handler.note(user).subscribe(res => {
       console.log('res:', res);
-      // localStorage.setItem('token', res.headers.get('token'));
+      localStorage.setItem('token', res.headers.get('token'));
       this.router.navigate(['/home']);
     },  (error) => console.error(error));
   }
