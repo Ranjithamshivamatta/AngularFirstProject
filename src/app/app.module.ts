@@ -14,6 +14,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MaterialModule } from './material/material.module';
 import { NoteComponent } from './components/note/note.component';
 import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.component';
+import { ImageComponent } from './components/image/image.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { SidenavbarComponent } from './components/sidenavbar/sidenavbar.componen
     HomeComponent,
     ForgotpasswordComponent,
     NoteComponent,
-    SidenavbarComponent
+    SidenavbarComponent,
+    ImageComponent
   ],
   imports: [
     BrowserModule,

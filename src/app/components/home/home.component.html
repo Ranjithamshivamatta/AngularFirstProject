@@ -75,11 +75,11 @@
       </mat-menu>
 
       <!-- User -->
-      <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="menu">
+      <!-- <button mat-icon-button class="icon-button" id="more" [matMenuTriggerFor]="menu">
         <i id="accountcircle" class="material-icons" *ngIf="imageData.imageSrc===null">account_circle</i>
         <img class="image" *ngIf="imageData.imageSrc!=null" [src]="imageData.imageSrc" height="60%"
           width="60%">
-      </button>
+      </button> -->
        <mat-menu #menu="matMenu" class="morecard">
         <div>
           <button mat-menu-item (click)="openDialog()">
@@ -97,5 +97,5 @@
   </mat-toolbar>
 </div>
 <mat-divider></mat-divider>
-<!-- side navigation bar 
-<<app-sidenavbar [toggleSidebar]="toggleNav" [grid]="grid"> </app-sidenavbar>  -->
+side navigation bar 
+<app-sidenavbar [toggleSidebar]="toggleNav" [grid]="grid"> </app-sidenavbar> 

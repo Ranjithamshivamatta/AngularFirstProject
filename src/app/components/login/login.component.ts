@@ -15,7 +15,7 @@ export class LoginComponent implements OnInit {
   submitted = false;
   returnUrl: string;
   hide = true;
-  constructor(private formBuilder: FormBuilder, private handler: HttpHandlerService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private handler: HttpHandlerService, private router: Router) { }
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -26,15 +26,22 @@ export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
   public onSubmit(user) {
+    console.log('1');
     this.submitted = true;
+    console.log('2');
     if (this.loginForm.invalid) {
+      console.log('3');
       return;
     }
     this.handler.login(user).subscribe(res => {
-      console.log('res:', res);
-      // localStorage.setItem('token', res.headers.get('token'));
-      this.router.navigate(['/home']);
-    },  (error) => console.error(error));
+      console.log('4');
+      // console.log('res:', res);
+      console.log('5');
+      localStorage.setItem('token', res.headers.get('token'));
+      if (localStorage.getItem('token') != null) {
+        this.router.navigate(['/home']);
+      }
+    }, (error) => console.error(error));
   }
 }
 
