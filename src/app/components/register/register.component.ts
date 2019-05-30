@@ -1,41 +1,48 @@
 import { OnInit, Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { HttpHandlerService } from 'src/app/service/http-handler.service';
 import { Router } from '@angular/router';
 
+import { MatSnackBar } from '@angular/material';
+import { UserService } from 'src/app/service/user.service';
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent implements OnInit {
-
   registerForm: FormGroup;
+  loading = false;
   submitted = false;
-  returnUrl: string;
   hide = true;
-  constructor(private formBuilder: FormBuilder, private handler: HttpHandlerService, private router: Router) {}
-  ngOnInit() {
+
+  constructor(private formBuilder: FormBuilder, private router: Router,
+              private userService: UserService, private snackBar: MatSnackBar) { }
+
+  public ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      id: ['', Validators.required],
-      name: ['', Validators.required],
-      phonenumber: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required]
+      id: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
+      phonenumber: ['', [Validators.required]]
     });
   }
-
   get f() { return this.registerForm.controls; }
-
   public onSubmit(user) {
     this.submitted = true;
+
+    // stop here if form is invalid
     if (this.registerForm.invalid) {
       return;
     }
-    this.handler.register(user).subscribe(res => {
-      console.log('res:', res);
-      // localStorage.setItem('token', res.headers.get('token'));
+    console.log(user);
+    this.userService.register(user).subscribe(response => {
+      console.log('registartion successful');
       this.router.navigate(['/login']);
-    },  (error) => console.error(error));
+    }, error => {
+      this.snackBar.open('error', 'cannot register', { duration: 2000 });
+    });
+
   }
+
 }
